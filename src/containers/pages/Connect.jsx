@@ -6,9 +6,13 @@ import {
     MailIcon,
 } from "@heroicons/react/solid";
 import LoadingFullWidth from "components/loaders/LoadingFullWidth";
+import {Navigate} from 'react-router-dom'
 import { loginWeb3 } from "redux/actions/web3";
-function Connect({ loading, loginWeb3 }) {
-    
+
+function Connect({ loading, loginWeb3, account, my_user }) {
+    if (my_user) {
+        return <Navigate to="/" />;
+    }
     return (
         <FullWidthLayout>
             <div className="text-center">
@@ -75,6 +79,8 @@ function Connect({ loading, loginWeb3 }) {
 
 const mapStateToProps = (state) => ({
     loading: state.web3.loading,
+    account: state.web3.account,
+    my_user: state.user.my_user,
 });
 
 export default connect(mapStateToProps, {

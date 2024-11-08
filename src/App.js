@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import store from "store";
 import Home from "containers/pages/Home";
 import Connect from "containers/pages/Connect";
+import Profile from "containers/pages/user/Profile";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
                   {/* Home Display */}
                   <Route path="/" element={<Home />} />
                   <Route path="/connect" element={<Connect />} />
+
+                  <Route path="/perfil/:user_account" element={<Profile />} />
+
               </Routes>
           </Router>
       </Provider>
